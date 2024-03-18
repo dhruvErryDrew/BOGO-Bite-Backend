@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-@r_b!)rt=vxdsu9dg&-28om9zobwk5*7qk9$59%tao5dm4d2yf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.140.2.51']
+ALLOWED_HOSTS = ['10.140.0.12']
 
 # Application definition
 
@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
+    'server',
 ]
+
+AUTH_USER_MODEL = "server.User"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -80,7 +83,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

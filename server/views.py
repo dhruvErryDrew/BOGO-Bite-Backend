@@ -6,7 +6,8 @@ from django.shortcuts import get_object_or_404
 from .serializers import UserSerializer
 from rest_framework import status
 from rest_framework.authtoken.models import Token
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from .models import User
 from django.contrib.auth import authenticate
 
 from django.views.decorators.csrf import ensure_csrf_cookie
