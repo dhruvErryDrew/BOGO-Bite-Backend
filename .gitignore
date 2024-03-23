@@ -3,3 +3,4 @@ db.sqlite3
 server/__pycache__
 server/migrations/__pycache__
 server/ip.py
+apps/users/__pycache__
