@@ -4,7 +4,7 @@ Content-Type: application/json
 { "username": "josephH", "password": "pass123", "email": "jhardin@gmail.com" }
 // { "username": "test2@gmail.com", "password": "pass123", "name": "joey", "business": true }
 
-
+# {"business": "dominos", "title": "BOGO", "desc": "sayl", "validThru": "2001-10-10"}
 ###
 
 POST http://10.140.2.51:8000/login 

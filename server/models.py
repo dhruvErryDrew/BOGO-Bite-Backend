@@ -12,3 +12,9 @@
 #     class Meta(object):
 #         model = User 
 #         fields = ['id', 'username', 'password', 'business', 'name']
+
+# class Coupon(models.Model):
+#     business = models.CharField(max_length = 100)
+#     title = models.CharField(max_length = 100)
+#     desc = models.TextField()
+#     validThru = models.DateField()
