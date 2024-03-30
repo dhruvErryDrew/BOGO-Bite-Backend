@@ -40,4 +40,4 @@ def getCoupons(request):
     # print(Coupon.objects.filter())
     coopons = serializers.serialize("json", Coupon.objects.all())
     print(coopons)
-    return Response({'ritreevdCooponz': True}, status=status.HTTP_201_CREATED)
+    return Response({'coupon': coopons, 'ritreevdCooponz': True}, status=status.HTTP_201_CREATED)
