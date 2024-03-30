@@ -24,9 +24,10 @@ def login(request):
         return JsonResponse({'loginExists': False})
         # return Response("missing user", status=status.HTTP_404_NOT_FOUND)
     token, created = Token.objects.get_or_create(user=user)
+    print(token.key)
     serializer = UserSerializer(user)
-    return JsonResponse({'loginExists': True})
-    # return Response({'token': token.key, 'user': serializer.data})
+    # return JsonResponse({'loginExists': True})
+    return JsonResponse({'loginExists': True, 'token': token.key, 'user': serializer.data})
 
 @api_view(['POST'])
 def signup(request):
