@@ -1,8 +1,7 @@
 POST http://10.141.0.14:8000/signup 
 Content-Type: application/json
 
-{ "username": "josephH", "password": "pass123", "email": "jhardin@gmail.com" }
-// { "username": "test2@gmail.com", "password": "pass123", "name": "joey", "business": true }
+{ "username": "test@gmail.com", "password": "pass123", "name": "Test", "business": false}
 
 # {"business": "dominos", "title": "BOGO", "desc": "sayl", "validThru": "2001-10-10"}
 ###
@@ -17,3 +16,9 @@ Content-Type: application/json
 GET http://127.0.0.1:8000/test
 Content-Type: application/json
 Authorization: Token 9ae6891972360370db468579c365e20d2678065c
+
+###
+
+POST http://10.142.116.85:8000/coupons/getCoupons
+Content-Type: application/json
+Authorization: Token 07e4489cdbc7fbc9e01949d07eb0b7945b43cf2d

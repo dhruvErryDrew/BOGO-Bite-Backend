@@ -6,7 +6,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('apps.users.urls')),
     path('coupons/', include('apps.coupons.urls'))
-    # re_path('login', views.login),
-    # re_path('signup', views.signup),
-    # re_path('test', views.test)
 ]
