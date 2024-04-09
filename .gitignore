@@ -6,3 +6,4 @@ server/ip.py
 apps/users/__pycache__
 apps/coupons/__pycache__
 apps/users/migrations/__pycache__
+apps/coupons/migrations/__pycache__
