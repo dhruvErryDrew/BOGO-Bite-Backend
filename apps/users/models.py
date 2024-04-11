@@ -18,10 +18,11 @@ class UserSerializer(serializers.ModelSerializer):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Make location required if business is true, and optional otherwise
-        if self.context.get('request'):
-            business = self.context['request'].data.get('business', False)
-            self.fields['location'].required = business
+        # Make location required if business is True
+        if self.instance and self.instance.business:
+            self.fields['location'].required = True
+        else:
+            self.fields['location'].required = False
 
     def validate(self, data):
         business = data.get('business', False)

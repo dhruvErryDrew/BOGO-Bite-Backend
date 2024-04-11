@@ -11,8 +11,8 @@ from rest_framework.exceptions import ValidationError
 from django.core import serializers
 
 @api_view(['POST'])
-@authentication_classes([SessionAuthentication, TokenAuthentication])
-@permission_classes([IsAuthenticated])
+# @authentication_classes([SessionAuthentication, TokenAuthentication])
+# @permission_classes([IsAuthenticated])
 def addCoupon(request):
     serializer = CouponSerializer(data=request.data)
     print(request.data)
@@ -33,9 +33,9 @@ def addCoupon(request):
         return Response({'createdCoupon': True}, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_200_OK) 
 
-@api_view(['POST'])
-@authentication_classes([SessionAuthentication, TokenAuthentication])
-@permission_classes([IsAuthenticated])
+@api_view(['GET'])
+# @authentication_classes([SessionAuthentication, TokenAuthentication])
+# @permission_classes([IsAuthenticated])
 def getCoupons(request):
     # print(type(request.user))
     # print(request.user.name)

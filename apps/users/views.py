@@ -9,6 +9,8 @@ from rest_framework.authtoken.models import Token
 # from django.contrib.auth.models import User
 from .models import User
 from django.contrib.auth import authenticate
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 
 from django.views.decorators.csrf import ensure_csrf_cookie
 
@@ -19,7 +21,7 @@ from rest_framework.permissions import IsAuthenticated
 @api_view(['POST'])
 def login(request):
     # print(request.data)
-    user = get_object_or_404(User, username=request.data['username'])
+    user = get_object_or_404(User, username__iexact=request.data['username'])
     if not user.check_password(request.data['password']):
         return JsonResponse({'loginExists': False})
         # return Response("missing user", status=status.HTTP_404_NOT_FOUND)
@@ -34,6 +36,10 @@ def signup(request):
     serializer = UserSerializer(data=request.data)
     # print(request.data)
     if serializer.is_valid():
+        try:
+            validate_password(password=request.data['password'])
+        except ValidationError as err:
+            return Response(err)
         serializer.save()
         user = User.objects.get(username=request.data['username'])
         user.set_password(request.data['password'])
