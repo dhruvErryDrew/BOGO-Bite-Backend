@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-from .ip import host
+#from .ip import host
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-@r_b!)rt=vxdsu9dg&-28om9zobwk5*7qk9$59%tao5dm4d2yf
 DEBUG = True
 
 # ALLOWED_HOSTS = ['10.142.121.27']
-ALLOWED_HOSTS = ['localhost', host]
+# ALLOWED_HOSTS = ['localhost', host]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -79,23 +80,23 @@ WSGI_APPLICATION = 'server.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+#DATABASES = {
+#    'default': {
+ #       'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+ #   }
+#}
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME':  'project_db',
-#         'USER': 'dbuser',
-#         'PASSWORD': 'Happy_Mouse_Laughing',
-#         'HOST': '34.125.2.186',
-#         'PORT': '3306'
-#     }
-# }
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+        'NAME':  'project_db',
+        'USER': 'dbuser',
+         'PASSWORD': 'Happy_Mouse_Laughing',
+        'HOST': '34.125.69.91',
+        'PORT': '3306'     
+        }
+ }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
