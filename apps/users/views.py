@@ -13,7 +13,7 @@ from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 
 from django.views.decorators.csrf import ensure_csrf_cookie
-
+from django.views import View
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
@@ -53,3 +53,14 @@ def signup(request):
 @permission_classes([IsAuthenticated])
 def test(request):
     return Response('Passed for {}'.format(request.user.email))
+
+class UserListView(View):
+    def get(self, request):
+        # Query all users
+        users = User.objects.all()
+        
+        # Serialize the users data
+        serializer = UserSerializer(users, many=True)
+        
+        # Return the JSON response
+        return JsonResponse(serializer.data, safe=False)

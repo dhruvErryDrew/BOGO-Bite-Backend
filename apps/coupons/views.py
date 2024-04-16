@@ -1,6 +1,7 @@
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import generics
 from .models import CouponSerializer, Coupon
 from rest_framework.response import Response
 from django.http import JsonResponse
@@ -9,6 +10,7 @@ from .models import Coupon
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
 from django.core import serializers
+
 
 @api_view(['POST'])
 # @authentication_classes([SessionAuthentication, TokenAuthentication])
@@ -42,3 +44,7 @@ def getCoupons(request):
     coopons = serializers.serialize("json", Coupon.objects.all())
     # print(coopons)
     return Response({'coupon': coopons, 'ritreevdCooponz': True}, status=status.HTTP_201_CREATED)
+
+class CouponList(generics.ListAPIView):
+    queryset = Coupon.objects.all()
+    serializer_class = CouponSerializer
