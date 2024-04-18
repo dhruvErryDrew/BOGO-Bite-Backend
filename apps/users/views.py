@@ -39,14 +39,14 @@ def signup(request):
         try:
             validate_password(password=request.data['password'])
         except ValidationError as err:
-            return Response(err)
+            return Response({'signedUp': False, 'error': str(err)})
         serializer.save()
         user = User.objects.get(username=request.data['username'])
         user.set_password(request.data['password'])
         user.save()
         token = Token.objects.create(user=user)
-        return Response({'token': token.key, 'user': serializer.data})
-    return Response(serializer.errors, status=status.HTTP_200_OK) 
+        return JsonResponse({'signedUp': True, 'token': token.key, 'user': serializer.data})
+    return Response({'signedUp': False, 'error': str(serializer.errors)}) 
 
 @api_view(['GET'])
 @authentication_classes([SessionAuthentication, TokenAuthentication])
