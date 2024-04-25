@@ -9,6 +9,7 @@ from rest_framework.authtoken.models import Token
 from .models import Coupon
 from rest_framework import status
 from rest_framework.exceptions import ValidationError
+from django.views.generic import ListView, DetailView
 from django.core import serializers
 
 
@@ -48,3 +49,13 @@ def getCoupons(request):
 class CouponList(generics.ListAPIView):
     queryset = Coupon.objects.all()
     serializer_class = CouponSerializer
+
+    class CouponListView(ListView):
+        model = Coupon
+        template_name = 'coupon/coupon_list.html'
+        context_object_name = 'coupons'
+
+    class CouponDetailView(DetailView):
+        model = Coupon
+        template_name = 'coupon/coupon_detail.html'
+        context_object_name = 'coupon'
